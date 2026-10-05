@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Exaustão e Alarme</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .descricao {
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .sensor {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .sensor h2 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .sensor p {
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        button {
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #333;
+            color: white;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .estado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #resultado {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        #resultado h2 {
+            margin-bottom: 10px;
+        }
+
+        #saida {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .ligado {
+            background: #ffd6d6 !important;
+            border: 2px solid #d00000;
+        }
+
+        .desligado {
+            background: #dff5df !important;
+            border: 2px solid #168316;
+        }
+
+        .formula {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+        }
+
+        code {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Sistema de Exaustão e Alarme</h1>
+
+        <p class="descricao">
+            Simulação das entradas A, B e C e da saída S,
+            conforme as regras de segurança da atividade.
+        </p>
+
+        <!-- SENSOR A -->
+        <section class="sensor">
+            <h2>Entrada A — Sensor de Fumaça</h2>
+
+            <p>
+                0 = Ambiente normal<br>
+                1 = Fumaça detectada
+            </p>
+
+            <button id="botaoA">Alternar A</button>
+
+            <p class="estado">
+                Valor atual: <span id="valorA">0</span>
+            </p>
+        </section>
+
+        <!-- SENSOR B -->
+        <section class="sensor">
+            <h2>Entrada B — Sensor de Temperatura</h2>
+
+            <p>
+                0 = Temperatura normal<br>
+                1 = Temperatura acima do limite
+            </p>
+
+            <button id="botaoB">Alternar B</button>
+
+            <p class="estado">
+                Valor atual: <span id="valorB">0</span>
+            </p>
+        </section>
+
+        <!-- SENSOR C -->
+        <section class="sensor">
+            <h2>Entrada C — Chave de Manutenção</h2>
+
+            <p>
+                0 = Operação automática<br>
+                1 = Técnico realizando manutenção
+            </p>
+
+            <button id="botaoC">Alternar C</button>
+
+            <p class="estado">
+                Valor atual: <span id="valorC">0</span>
+            </p>
+        </section>
+
+        <!-- RESULTADO -->
+        <section id="resultado">
+
+            <h2>Saída S</h2>
+
+            <p id="saida">
+                Sistema desligado — S = 0
+            </p>
+
+            <p id="motivo"></p>
+
+        </section>
+
+        <div class="formula">
+            <strong>Lógica utilizada:</strong>
+
+            <p>
+                <code>S = A || (B && !C)</code>
+            </p>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
