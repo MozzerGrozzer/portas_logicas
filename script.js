@@ -3,7 +3,6 @@ let A = 0;
 let B = 0;
 let C = 0;
 
-
 // Elementos HTML
 const valorA = document.getElementById("valorA");
 const valorB = document.getElementById("valorB");
@@ -42,7 +41,6 @@ document.getElementById("botaoC").addEventListener("click", function () {
     atualizarSistema();
 
 });
-
 
 // Função responsável por executar a lógica
 function atualizarSistema() {
