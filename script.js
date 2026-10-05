@@ -52,19 +52,7 @@ function atualizarSistema() {
     valorB.textContent = B;
     valorC.textContent = C;
 
-
-    /*
-        REGRA DE NEGÓCIO:
-
-        A = 1 → fumaça detectada
-        B = 1 → temperatura crítica
-        C = 1 → manutenção ativada
-
-        S = A || (B && !C)
-    */
-
     const S = A || (B && !C);
-
 
     // Verifica o resultado
     if (S) {
@@ -74,18 +62,15 @@ function atualizarSistema() {
         resultado.classList.remove("desligado");
         resultado.classList.add("ligado");
 
-
         // Explica por que o sistema foi acionado
         if (A === 1) {
 
             motivo.textContent =
                 "Fumaça detectada: a prioridade absoluta foi acionada.";
-
         } else {
 
             motivo.textContent =
                 "Temperatura crítica detectada e o equipamento não está em manutenção.";
-
         }
 
     } else {
@@ -108,7 +93,6 @@ function atualizarSistema() {
         }
     }
 }
-
 
 // Executa uma primeira vez para configurar a tela
 atualizarSistema();
